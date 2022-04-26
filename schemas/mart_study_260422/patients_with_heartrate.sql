@@ -1,5 +1,5 @@
-SELECT "dbt-somethingelse_dbt".heartrate.*, "dbt-mimic_dbt".patients.dod
+SELECT heartrate.*, patients.dod -- dbt-ref(patients, heartrate)
 FROM
-    "dbt-somethingelse_dbt".heartrate
+    heartrate -- dbt-ref(heartrate)
 LEFT JOIN
-    "dbt-mimic_dbt".patients ON "dbt-mimic_dbt".patients.id = "dbt-somethingelse_dbt".heartrate.subject_id
+    patients ON patients.id = heartrate.subject_id -- dbt-ref(patients, heartrate)
